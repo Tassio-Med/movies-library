@@ -1,7 +1,11 @@
+import Home from './Pages/Home/Home'
+import Movie from './Pages/Movie/Movie';
+
 function App() {
   return (
     <div className="App">
-      <h1>Iniciando o projeto</h1>
+      <Home/>
+      <Movie/>
     </div>
   );
 }
