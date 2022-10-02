@@ -1,7 +1,7 @@
 function Home(){
   return(
-    <div>
-      <h1>Bem-vindo</h1>
+    <div className="w-full h-screen uppercase flex flex-col relative top-20">
+      <h1 >Bem-vindo</h1>
     </div>
   )
 }
