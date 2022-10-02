@@ -1,11 +1,9 @@
-import Home from './Pages/Home/Home'
-import Movie from './Pages/Movie/Movie';
+import RoutesApp from './routes';
 
 function App() {
   return (
     <div className="App">
-      <Home/>
-      <Movie/>
+      <RoutesApp/>
     </div>
   );
 }
