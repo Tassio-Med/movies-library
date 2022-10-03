@@ -16,7 +16,9 @@ function Home(){
           page: 1,
         }
       })
-      console.log(response.data.results);
+      // console.log(response.data.results.slice(0, 15));
+      setFimes(response.data.results.slice(0, 15))
+      
     }
     loadFilmes();
   }, [])
