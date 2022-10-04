@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import Slider from "react-slick";
 
+import {RiStarFill, RiFlagFill} from 'react-icons/ri'
+import {FaCalendarAlt} from 'react-icons/fa'
+
 import api from '../../services/api';
 
 import "slick-carousel/slick/slick.css";
@@ -35,7 +38,7 @@ function Carousel(){
         }
       })
       // console.log(response.data.results.slice(0, 15));
-      setFilmes(response.data.results.slice(0, 15))
+      setFilmes(response.data.results.slice(0, 10))
 
     }
     loadFilmes();
@@ -62,12 +65,12 @@ function Carousel(){
   };
 
   return (
-    <div className=" w-full h-screen uppercase  relative overflow-x-hidden">
+    <div className=" w-full h-full uppercase  relative overflow-x-hidden">
        <div className="slider-wrapper">  
 
         {/* CAPA */}
 
-        <div className=' relative z-0'>
+        <div className='relative z-0'>
           <Slider
             {...settingsMain}
             asNavFor={nav2}
@@ -76,11 +79,24 @@ function Carousel(){
           >
             {filmes.map((filme) =>
               <div className="slick-slide" key={filme.id}>
-                <h2 className="slick-slide-title text-white absolute inset-0 z-10">{filme.name}</h2>
+                <div className='w-[800px] h-full p-14 text-white absolute insent-0  z-30 block justify-start align-center'>
+                  <div className='text-shadow w-full p-3'>
+                    <h2 className="slick-slide-title text-6xl font-bold drop-shadow-3xl font-">{filme.name}</h2>
+                    <div className='flex justify-between w-80  my-4 text-lg'>
+                      <h3 className='mx-1 flex items-center drop-shadow-3xl'><RiStarFill className='mx-1 text-yellow-400'/> {filme.vote_average}</h3>
+                      <h3>|</h3>
+                      <h3 className='mx-1 flex items-center drop-shadow-3xl'><FaCalendarAlt className='mx-2 text-indigo-600'/>{filme.first_air_date}</h3>
+                      <h3>|</h3>
+                      <h3 className='mx-1 flex items-center drop-shadow-3xl'><RiFlagFill className='mx-1 text-blue-600'/>{filme.origin_country}</h3>
+                    </div>
+                    <button className='w-36 h-10 px-4 py-1 rounded-lg bg-indigo-600  hover:bg-indigo-800 flex justify-center items-center tracking-wider'>
+                      <Link to={`/filme/${filme.id}`} className="font-bold text-slate-50 flex items-center"> Acessar </Link>
+                    </button>
+                  </div>
+                </div>
                 <div className='w-full' key={filme.id}>
                   <img className="w-full h-full" src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`} alt={filme.name} />
                 </div>
-                {/* <button className='absolute'><Link to={`/filme/${filme.id}`}>Acessar</Link></button> */}
               </div>
             )}
           </Slider>
@@ -90,7 +106,7 @@ function Carousel(){
               {...settingsThumbs}
               asNavFor={nav1}
               ref={slider => (setSlider2(slider))}
-              className="w-[550px] m-10 grid-rows-3"
+              className="w-[550px] m-10 grid-rows-3 card-blur"
               >
 
               {filmes.map((filme) =>
