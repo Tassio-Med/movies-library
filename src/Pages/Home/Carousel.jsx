@@ -12,6 +12,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 function Carousel(){
   const [filmes, setFilmes] = useState([]);
+
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
   const [slider1, setSlider1] = useState(null);
@@ -33,8 +34,8 @@ function Carousel(){
           page: 1,
         }
       })
-      console.log(response.data.results.slice(0, 15));
-      setFilmes(response.data.results.slice(0, 10))
+      // console.log(response.data.results.slice(0, 15));
+      setFilmes(response.data.results.slice(0, 15))
 
     }
     loadFilmes();
@@ -57,54 +58,55 @@ function Carousel(){
     centerMode: true,
     swipeToSlide: true,
     focusOnSelect: true,
-    centerPadding: '10px'
+    centerPadding: '20px'
   };
 
   return (
-    <div className="className=w-full h-screen uppercase flex flex-col relative">
+    <div className=" w-full h-screen uppercase  relative overflow-x-hidden">
        <div className="slider-wrapper">  
 
         {/* CAPA */}
 
-        <Slider
-          {...settingsMain}
-          asNavFor={nav2}
-          ref={slider => (setSlider1(slider))}
-        >
-
-          {filmes.map((filme) =>
-
-            <div className="slick-slide" key={filme.id}>
-              <h2 className="slick-slide-title bg-indigo-400">{filme.name}</h2>
-              <img className="w-full h-full object-cover mix-blend-overlay" src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`} alt={filme.name} />
-              {/* <label className="slick-slide-label">{filme.label}</label> */}
-            </div>
-
-          )}
-
-        {/* THUMBNAIL */}
-
-        </Slider>
-        <div className="thumbnail-slider-wrap m-7">
-
+        <div className=' relative z-0'>
           <Slider
-            {...settingsThumbs}
-            asNavFor={nav1}
-            ref={slider => (setSlider2(slider))}
-            >
-
+            {...settingsMain}
+            asNavFor={nav2}
+            ref={slider => (setSlider1(slider))}
+            className="w-full absolute"
+          >
             {filmes.map((filme) =>
-
-              <div style={{ display: 'grid !important' }} className="slick-slide shadow-lg mx-5 p-28 rounded-lg" key={filme.id}>
-                <h2 className="text-lg font-bold">{filme.name}</h2>
-                <img className="slick-slide-image  object-cover" src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.name}/>
-                <button><Link to={`/filme/${filme.id}`}>Acessar</Link></button>
+              <div className="slick-slide" key={filme.id}>
+                <h2 className="slick-slide-title text-white absolute inset-0 z-10">{filme.name}</h2>
+                <div className='w-full' key={filme.id}>
+                  <img className="w-full h-full" src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`} alt={filme.name} />
+                </div>
+                {/* <button className='absolute'><Link to={`/filme/${filme.id}`}>Acessar</Link></button> */}
               </div>
-
             )}
-
           </Slider>
+          {/* THUMBNAIL */}
+          <div className="thumbnail-slider-wrap absolute inset-0 z-10 w-full h-full left-16">
+            <Slider
+              {...settingsThumbs}
+              asNavFor={nav1}
+              ref={slider => (setSlider2(slider))}
+              className="w-[550px] m-10 grid-rows-3"
+              >
+
+              {filmes.map((filme) =>
+
+                <div className="card p-full m-5 " key={filme.id}>
+                  {/* <h2 className="text-lg font-bold">{filme.name}</h2> */}
+                  <img className="w-full h-full object-cover rounded-xl" src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.name}/>
+                
+                </div>
+
+              )}
+
+            </Slider>
+          </div>
         </div>
+        
       </div>
      
     </div>

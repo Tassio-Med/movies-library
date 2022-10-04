@@ -3,15 +3,32 @@
 @tailwind utilities;
 
 @layer components {
-  .thumbnail-slider-wrap {
-    margin-top: 15px;
-    height: 25px;
-    /* width: 85rem; */
+
+  .slick-slide > div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100%%
   }
-  .thumbnail-slider-wrap .slick-track .slick-slide {
-    text-align: center;
+
+  .card {
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 300ms;
   }
-  .thumbnail-slider-wrap .slick-track .slick-slide {
-    width: 70%;
+  
+  .card:hover {
+    transform: scale(1.15);
   }
+
+  .thumbnail-slider-wrap{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    /* align-content:center; */
+  }
+  
 }
