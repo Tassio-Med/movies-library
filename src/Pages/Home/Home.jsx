@@ -14,9 +14,10 @@ import "slick-carousel/slick/slick-theme.css";
 
 function Home(){
   const [filmes, setFilmes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const [nav1, setNav1] = useState(null);
-  const [nav2, setNav2] = useState(null);
+  const [nav1, setNav1] = useState();
+  const [nav2, setNav2] = useState();
   const [slider1, setSlider1] = useState(null);
   const [slider2, setSlider2] = useState(null);
 
@@ -36,6 +37,9 @@ function Home(){
       })
       // console.log(response.data.results.slice(0, 15));
       setFilmes(response.data.results.slice(0, 10))
+      setLoading(false);
+      // setNav1(slider1);
+      // setNav2(slider2);
 
     }
     loadFilmes();
@@ -60,6 +64,14 @@ function Home(){
     focusOnSelect: true,
     centerPadding: '20px'
   };
+
+  if(loading){
+    return(
+      <div className='w-full flex justify-center align-center mt-20 absolute bg-green-400'>
+        <h2>Carregando filmes...</h2>
+      </div>
+    )
+  }
 
   return (
     <div className=" w-full h-full uppercase  relative overflow-x-hidden">
@@ -87,9 +99,7 @@ function Home(){
                         <h3>|</h3>
                         <h3 className='mx-1 flex items-center drop-shadow-3xl'><RiFlagFill className='mx-1 text-blue-600'/>{filme.origin_country}</h3>
                       </div>
-                      <button className='w-36 h-10 px-4 py-1 rounded-lg bg-indigo-600  hover:bg-indigo-800 flex justify-center items-center tracking-wider'>
-                        <Link className="font-bold text-slate-50 flex items-center" to={`/filme/${filme.id}`} > Acessar </Link>
-                      </button>
+                      
                     </div>
                   </div>
                   <div className='w-full' key={filme.id}>
@@ -114,6 +124,9 @@ function Home(){
                   <div className="card p-full m-5 " key={filme.id}>
                   {/* <h2 className="text-lg font-bold">{filme.name}</h2> */}
                   <img className="w-full h-full object-cover rounded-xl" src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.name}/>
+                  <button className='w-36 h-10 px-4 py-1 rounded-lg bg-indigo-600  hover:bg-indigo-800 flex justify-center items-center tracking-wider'>
+                    <Link className="font-bold text-slate-50 flex items-center" to={`/filme/${filme.id}`} > Acessar </Link>
+                  </button>
                 
                 </div>
                 )
