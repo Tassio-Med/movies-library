@@ -74,28 +74,31 @@ function Home(){
             ref={slider => (setSlider1(slider))}
             className="w-full absolute"
           >
-            {filmes.map((filme) =>
-              <div className="slick-slide" key={filme.id}>
-                <div className='w-[800px] h-full p-14 text-white absolute insent-0  z-30 block justify-start align-center'>
-                  <div className='text-shadow w-full p-3'>
-                    <h2 className="slick-slide-title text-6xl font-bold drop-shadow-3xl font-">{filme.name}</h2>
-                    <div className='flex justify-between w-80  my-4 text-lg'>
-                      <h3 className='mx-1 flex items-center drop-shadow-3xl'><RiStarFill className='mx-1 text-yellow-400'/> {filme.vote_average}</h3>
-                      <h3>|</h3>
-                      <h3 className='mx-1 flex items-center drop-shadow-3xl'><FaCalendarAlt className='mx-2 text-indigo-600'/>{filme.first_air_date}</h3>
-                      <h3>|</h3>
-                      <h3 className='mx-1 flex items-center drop-shadow-3xl'><RiFlagFill className='mx-1 text-blue-600'/>{filme.origin_country}</h3>
+            {filmes.map((filme)=> {
+              return(
+                <div className="slick-slide" key={filme.id}>
+                  <div className='w-[800px] h-full p-14 text-white absolute insent-0  z-30 block justify-start align-center'>
+                    <div className='text-shadow w-full p-3'>
+                      <h2 className="slick-slide-title text-6xl font-bold drop-shadow-3xl font-">{filme.name}</h2>
+                      <div className='flex justify-between w-80  my-4 text-lg'>
+                        <h3 className='mx-1 flex items-center drop-shadow-3xl'><RiStarFill className='mx-1 text-yellow-400'/> {filme.vote_average}</h3>
+                        <h3>|</h3>
+                        <h3 className='mx-1 flex items-center drop-shadow-3xl'><FaCalendarAlt className='mx-2 text-indigo-600'/>{filme.first_air_date}</h3>
+                        <h3>|</h3>
+                        <h3 className='mx-1 flex items-center drop-shadow-3xl'><RiFlagFill className='mx-1 text-blue-600'/>{filme.origin_country}</h3>
+                      </div>
+                      <button className='w-36 h-10 px-4 py-1 rounded-lg bg-indigo-600  hover:bg-indigo-800 flex justify-center items-center tracking-wider'>
+                        <Link className="font-bold text-slate-50 flex items-center" to={`/filme/${filme.id}`} > Acessar </Link>
+                      </button>
                     </div>
-                    <button className='w-36 h-10 px-4 py-1 rounded-lg bg-indigo-600  hover:bg-indigo-800 flex justify-center items-center tracking-wider'>
-                      <Link className="font-bold text-slate-50 flex items-center" to={`/filme/${filme.id}`} > Acessar </Link>
-                    </button>
+                  </div>
+                  <div className='w-full' key={filme.id}>
+                    <img className="w-full h-full" src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`} alt={filme.name} />
                   </div>
                 </div>
-                <div className='w-full' key={filme.id}>
-                  <img className="w-full h-full" src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`} alt={filme.name} />
-                </div>
-              </div>
-            )}
+              )
+            })}
+              
           </Slider>
           {/* THUMBNAIL */}
           <div className="thumbnail-slider-wrap absolute inset-0 z-10 w-full h-full left-16">
@@ -106,16 +109,15 @@ function Home(){
               className="w-[550px] m-10 grid-rows-3 card-blur"
               >
 
-              {filmes.map((filme) =>
-
-                <div className="card p-full m-5 " key={filme.id}>
+              {filmes.map((filme)=>{
+                return(
+                  <div className="card p-full m-5 " key={filme.id}>
                   {/* <h2 className="text-lg font-bold">{filme.name}</h2> */}
                   <img className="w-full h-full object-cover rounded-xl" src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.name}/>
                 
                 </div>
-
-              )}
-
+                )
+              })}
             </Slider>
           </div>
         </div>
