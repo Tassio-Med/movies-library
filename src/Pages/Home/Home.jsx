@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-// App.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
