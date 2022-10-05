@@ -11,7 +11,7 @@ function RoutesApp(){
       <Header/>
       <Routes>
         <Route path="/" element={ <Home/> }/>
-        <Route path="/movie:id" element={ <Movie/> }/>
+        <Route path="/filme:id" element={ <Movie/> }/>
       </Routes>
     </BrowserRouter>
   )
