@@ -1,11 +1,12 @@
 import React from "react";
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import api from '../../services/api';
 
 function Movie(){
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [filme, setFilme] = useState({});
   const [loading, setLoading] = useState(true);
@@ -23,7 +24,9 @@ function Movie(){
         setLoading(false);
       })
       .catch(() => {
-        console.log('Filme não encontrado');
+        // console.log('Filme não encontrado');
+        navigate("/", { replace: true });
+        return;
       })
     }
 
@@ -32,7 +35,7 @@ function Movie(){
     return () => {
       console.log("O componente foi desmontado")
     }
-  }, [])
+  }, [navigate, id])
 
   if(loading){
     return(
