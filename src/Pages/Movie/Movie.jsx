@@ -55,6 +55,10 @@ function Movie(){
       <div>{filme.overview}</div>
 
       <strong>Nota: {filme.vote_average}</strong>
+      <button>Salvar</button>
+      <button>
+        <a target="blank" rel="external" href={`https://youtube.com/results?search_query=${filme.name} Trailer`}>Trailer</a>
+      </button>
     </div>
   )
 }
