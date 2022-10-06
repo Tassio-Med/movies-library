@@ -37,6 +37,23 @@ function Movie(){
     }
   }, [navigate, id])
 
+  function saveMovie(){
+    const myMovieList = localStorage.getItem("@movielibrary");
+
+    let moviesOnCloud = JSON.parse(myMovieList) || [];
+
+    const hasMovie = moviesOnCloud.some((saved) => saved.id === filme.id)
+
+    if(hasMovie){
+      alert("ESSE FILME JÁ ESTÁ NA LISTA");
+      return;
+    }
+
+    moviesOnCloud.push(filme);
+    localStorage.setItem("@movielibrary", JSON.stringify(moviesOnCloud));
+    alert("FILME SALVO COM SUCESSO")
+  }
+
   if(loading){
     return(
       <div className='w-full flex justify-center align-center mt-20 absolute bg-green-400'>
@@ -44,7 +61,6 @@ function Movie(){
       </div>
     )
   }
-
 
   return(
     <div>
@@ -55,10 +71,16 @@ function Movie(){
       <div>{filme.overview}</div>
 
       <strong>Nota: {filme.vote_average}</strong>
-      <button>Salvar</button>
-      <button>
-        <a target="blank" rel="external" href={`https://youtube.com/results?search_query=${filme.name} Trailer`}>Trailer</a>
-      </button>
+
+      <div>
+        <button onClick={ saveMovie } >Salvar</button>
+        <button >
+          <a target="blank" rel="external" href={`https://youtube.com/results?search_query=${filme.name} Trailer`}>
+            Trailer
+          </a>
+        </button>
+      </div>
+
     </div>
   )
 }
