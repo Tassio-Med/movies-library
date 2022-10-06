@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+import { toast } from 'react-toastify';
+
 import api from '../../services/api';
 
 function Movie(){
@@ -45,13 +47,13 @@ function Movie(){
     const hasMovie = moviesOnCloud.some((saved) => saved.id === filme.id)
 
     if(hasMovie){
-      alert("ESSE FILME JÁ ESTÁ NA LISTA");
+      toast.warn("Esse filme já foi salvo anteriormente!");
       return;
     }
 
     moviesOnCloud.push(filme);
     localStorage.setItem("@movielibrary", JSON.stringify(moviesOnCloud));
-    alert("FILME SALVO COM SUCESSO")
+    toast.success("Filme salvo com sucesso!")
   }
 
   if(loading){
