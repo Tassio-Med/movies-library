@@ -10,7 +10,7 @@ function Header(){
         </Link>
       </div>
       <button className=' tracking-wider w-36 h-10 mx-10 px-4 py-1 bg-indigo-600 rounded-lg flex items-center hover:bg-indigo-800'>
-        <Link to="/favoritos" className='w-full h-full font-bold text-slate-50 flex items-center'>Favoritos</Link>
+        <Link to="/favorites" className='w-full h-full font-bold text-slate-50 flex items-center'>Favoritos</Link>
         <BiStar className='text-2xl text-slate-50'/>
       </button>
     </header>

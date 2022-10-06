@@ -43,7 +43,7 @@ function Home(){
                 <h2 className="text-lg font-bold">{filme.name}</h2>
                 <img className="w-full h-full object-cover rounded-xl" src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.name}/>
                 <button className='w-34 h-10 px-4 py-1 rounded-lg bg-indigo-600  hover:bg-indigo-800 flex justify-center items-center tracking-wider'>
-                  <Link className="font-bold text-slate-50 flex items-center" to={`/filme/${filme.id}`} > Acessar </Link>
+                  <Link className="font-bold text-slate-50 flex items-center" to={`/movie/${filme.id}`} > Acessar </Link>
                 </button>
               </div>
             )
