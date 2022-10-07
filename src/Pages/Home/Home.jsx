@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
 
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-
-import { Puff } from  'react-loader-spinner';
-
+import ClipLoader from "react-spinners/ClipLoader";
 
 // API URL: /tv/popular?api_key=fedd1180bea199228b93bece9b17a8df&language=pt-BR
 
@@ -33,8 +30,8 @@ function Home(){
 
   if(loading){
     return(
-      <div className='w-full flex justify-center items-center mt-20 absolute bg-green-400'>
-        <h2>Carregando filmes...  <Puff height = "80" width = "100" color = 'blue' ariaLabel = 'Loading'/></h2>
+      <div className='w-full flex justify-center items-center mt-20 absolute'>
+        <h2>Carregando filmes... <ClipLoader lclassName="text-indigo-600" loading={loading}  size={80} aria-label="Loading Spinner" /></h2>
         
       </div>
     )
@@ -42,6 +39,7 @@ function Home(){
 
   return (
     <div className=" w-full h-full uppercase relative">
+      {/* <img src={filme.backdrop_path} height="300" width="500" />  */}
       <div className="">
           {filmes.map((filme)=>{
             return(

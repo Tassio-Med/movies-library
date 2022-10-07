@@ -4,6 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
+import ClipLoader from "react-spinners/ClipLoader";
+
 import api from '../../services/api';
 
 function Movie(){
@@ -58,8 +60,8 @@ function Movie(){
 
   if(loading){
     return(
-      <div className='w-full flex justify-center align-center mt-20 absolute bg-green-400'>
-        <h2>Carregando detalhes</h2>
+      <div className='w-full flex justify-center align-center mt-20 absolute'>
+        <h2>Carregando detalhes <ClipLoader className="text-indigo-600" loading={loading}  size={80} aria-label="Loading Spinner" /></h2>
       </div>
     )
   }
