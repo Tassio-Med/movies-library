@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
 
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+
+import { Puff } from  'react-loader-spinner';
+
+
 // API URL: /tv/popular?api_key=fedd1180bea199228b93bece9b17a8df&language=pt-BR
 
 function Home(){
@@ -29,7 +34,8 @@ function Home(){
   if(loading){
     return(
       <div className='w-full flex justify-center items-center mt-20 absolute bg-green-400'>
-        <h2>Carregando filmes...</h2>
+        <h2>Carregando filmes...  <Puff height = "80" width = "100" color = 'blue' ariaLabel = 'Loading'/></h2>
+        
       </div>
     )
   }
