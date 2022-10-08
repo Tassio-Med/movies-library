@@ -44,7 +44,7 @@ function Home(){
   const handleClick =(img)=>{
     setBackground(`https://image.tmdb.org/t/p/original/${img}`)
     const imgBg = filmes.find((f)=> f[0].backdrop_path);
-    console.log(imgBg);
+    // console.log(imgBg);
   }
 
   const slideLeft = () => {
@@ -60,18 +60,18 @@ function Home(){
   return (
     <div>
       {/* <img src={filme.backdrop_path} height="300" width="500" />  */}
-      <img src={background}   className='w-full h-screen object-cover' alt="/"/> 
-      <div className='relative flex items-center'>
-        <MdChevronLeft className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} size={40} />
+      <img src={background}   className='w-full h-screen object-cover z-0' alt="/"/> 
+      <div className='w-[1000px] relative flex justify-center items-center z-10 glass'>
+        <MdChevronLeft className='opacity-50 cursor-pointer text-indigo-600 hover:opacity-100' onClick={slideLeft} size={40} />
         <div
           id='slider'
-          className='w-[1200px] h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide'
+          className='w-[600px] h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide'
           >
             {filmes.map((filme)=> (
-                <img className='w-[150px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300' onClick={()=>handleClick(filme.backdrop_path)} src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.name}/>
+                <img className='w-[120px] rounded-2xl inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300' onClick={()=>handleClick(filme.backdrop_path)} src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.name}/>
             ))}
         </div>
-        <MdChevronRight className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight} size={40} />     
+        <MdChevronRight className='opacity-50 cursor-pointer text-indigo-600 hover:opacity-100' onClick={slideRight} size={40} />     
       </div>
     </div>
   );
