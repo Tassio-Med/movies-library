@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
 
 import ClipLoader from "react-spinners/ClipLoader";
-
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 // API URL: /tv/popular?api_key=fedd1180bea199228b93bece9b17a8df&language=pt-BR
 
@@ -13,7 +11,6 @@ function Home(){
   const [filmes, setFilmes] = useState([]);
   const [loading, setLoading] = useState(true);
   
-  const [background, setBackground] = useState();
 
   useEffect(() => {
     async function loadFilmes(){
@@ -26,52 +23,33 @@ function Home(){
       })
       setFilmes(response.data.results);
       setLoading(false);
-      console.log(filmes);
     }
     loadFilmes();
-  }, [filmes])
+  }, [])
 
 
   if(loading){
     return(
-      <div className='w-full flex justify-center items-center mt-20 absolute'>
+      <div className='w-full flex justify-center items-center my-20 absolute'>
         <h2>Carregando filmes... <ClipLoader lclassName="text-indigo-600" loading={loading}  size={80} aria-label="Loading Spinner" /></h2>
         
       </div>
     )
   }
-
-  const handleClick =(img)=>{
-    setBackground(`https://image.tmdb.org/t/p/original/${img}`)
-    const imgBg = filmes.find((f)=> f[0].backdrop_path);
-    // console.log(imgBg);
-  }
-
-  const slideLeft = () => {
-    var slider = document.getElementById('slider');
-    slider.scrollLeft = slider.scrollLeft - 500;
-  };
-
-  const slideRight = () => {
-    var slider = document.getElementById('slider');
-    slider.scrollLeft = slider.scrollLeft + 500;
-  };
-
+ 
   return (
-    <div>
-      {/* <img src={filme.backdrop_path} height="300" width="500" />  */}
-      <img src={background}   className='w-full h-screen object-cover z-0' alt="/"/> 
-      <div className='w-[1000px] relative flex justify-center items-center z-10 glass'>
-        <MdChevronLeft className='opacity-50 cursor-pointer text-indigo-600 hover:opacity-100' onClick={slideLeft} size={40} />
-        <div
-          id='slider'
-          className='w-[600px] h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide'
-          >
-            {filmes.map((filme)=> (
-                <img className='w-[120px] rounded-2xl inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300' onClick={()=>handleClick(filme.backdrop_path)} src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.name}/>
-            ))}
-        </div>
-        <MdChevronRight className='opacity-50 cursor-pointer text-indigo-600 hover:opacity-100' onClick={slideRight} size={40} />     
+    <div className='w-full h-full relative top-20 flex justify-center items-center bg-slate-100'>
+      <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4'>
+        {filmes.map((filme)=>{
+            return(
+              <div className="w-64 m-4 drop-shadow-lg hover:scale-105 ease-in-out duration-300" key={filme.id}>
+                <img className="w-full rounded-t-2xl" src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.name}/>
+                <button className='w-full flex rounded-b-2xl justify-center items-center h-10 px-4 py-1 bg-indigo-600  hover:bg-indigo-800'>
+                  <Link className="font-bold text-slate-50 flex items-center" to={`/movie/${filme.id}`} > Acessar </Link>
+                </button>
+              </div>
+            )
+          })}
       </div>
     </div>
   );
