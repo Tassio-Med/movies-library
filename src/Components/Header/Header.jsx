@@ -3,7 +3,7 @@ import {BiCameraMovie, BiStar} from 'react-icons/bi'
 
 function Header(){
   return(
-    <header className='w-screen h-24 bg-gradient-to-b from-gray-900 shadow-bottom z-20 fixed drop-shadow-md flex justify-between items-center'>
+    <header className='w-screen h-24 bg-slate-50  z-20 fixed drop-shadow-lg flex justify-between items-center'>
       <div className='mx-10'>
         <Link to="/" className=''>
           <BiCameraMovie className='text-5xl text-indigo-600 md:text:3xl'/>

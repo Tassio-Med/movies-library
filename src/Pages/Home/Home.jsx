@@ -30,9 +30,10 @@ function Home(){
 
   if(loading){
     return(
-      <div className='w-full flex justify-center items-center my-20 absolute'>
-        <h2>Carregando filmes... <ClipLoader lclassName="text-indigo-600" loading={loading}  size={80} aria-label="Loading Spinner" /></h2>
-        
+      <div className='w-full h-screen flex justify-center items-center'>
+        <div className='block justify-center items-center'>
+          <ClipLoader className="text-indigo-600" loading={loading}  size={60} aria-label="Loading Spinner" />
+        </div>
       </div>
     )
   }
@@ -45,7 +46,7 @@ function Home(){
               <div className="w-64 m-4 drop-shadow-lg hover:scale-105 ease-in-out duration-300" key={filme.id}>
                 <img className="w-full rounded-t-2xl" src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.name}/>
                 <button className='w-full flex rounded-b-2xl justify-center items-center h-10 px-4 py-1 bg-indigo-600  hover:bg-indigo-800'>
-                  <Link className="font-bold text-slate-50 flex items-center" to={`/movie/${filme.id}`} > Acessar </Link>
+                  <Link className="w-full h-full font-bold text-slate-50 flex justify-center items-center" to={`/movie/${filme.id}`} > Acessar </Link>
                 </button>
               </div>
             )

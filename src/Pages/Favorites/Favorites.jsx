@@ -2,6 +2,9 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import {BsFillTrashFill} from 'react-icons/bs';
+import {CgDetailsMore} from 'react-icons/cg'
+
 import { toast } from 'react-toastify';
 
 function Favorites(){
@@ -23,21 +26,25 @@ function Favorites(){
   }
 
   return(
-    <div className="absolute my-20">
-      <h1>Página de Favoritos</h1>
+    <div className="absolute w-full h-full flex justify-center items-center bg-slate-100">
+      {/* <h1>Página de Favoritos</h1> */}
 
-      {movies.length === 0 && <span>Você não possui nenhum filme salvo :(</span>}
+      {movies.length === 0 && <span className=" text-indigo-800 text-3xl font-bold mr-10">Você não possui nenhum filme salvo :(</span>}
 
-      <ul>
+      <ul className= {movies.length === 0 ? "bg-inherit" :  "w-[1200px] p-4 bg-slate-50 rounded-xl shadow-xl border-2"}>
         {movies.map((item)=>{
           return(
-            <li key={item.id}>
-              <span>{item.name}</span>
-              <div>
-                <button>
-                  <Link to={`/movie/${item.id}`}>Ver detalhes</Link>
+            <li key={item.id} className="flex justify-between p-3 rounded-xl hover:bg-slate-300">
+              <h2 className="text-xl font-bold mr-10">{item.name}</h2>
+              <div className="flex">
+                <button className="mr-10 p-1 w-40 flex justify-center items-center text-white font-bold rounded-lg bg-blue-600  hover:bg-blue-800">
+                  <Link to={`/movie/${item.id}`} className="w-full h-full flex justify-center items-center"> Ver detalhes </Link>
+                  <CgDetailsMore className="mr-2 text-2xl"/>
                 </button>
-                <button onClick={ () => deleteMovie(item.id) }>Excluir</button>
+                <button className="p-1 w-32 flex justify-center items-center text-white font-bold rounded-lg bg-red-600  hover:bg-red-800" onClick={ () => deleteMovie(item.id) }>
+                  Excluir
+                  <BsFillTrashFill className="ml-2"/>
+                </button>
               </div>
             </li>
           )

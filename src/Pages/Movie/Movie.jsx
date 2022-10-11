@@ -64,16 +64,18 @@ function Movie(){
 
   if(loading){
     return(
-      <div className='w-full flex justify-center align-center mt-20 absolute'>
-        <h2>Carregando detalhes <ClipLoader className="text-indigo-600" loading={loading}  size={80} aria-label="Loading Spinner" /></h2>
+      <div className="w-full h-screen justify-center items-center">
+        <div className='flex justify-center items-center'>
+          <ClipLoader className="text-indigo-600" loading={loading}  size={60} aria-label="Loading Spinner" />
+        </div>
       </div>
     )
   }
 
   return(
     <div className="w-full h-full">
-      <div className="absolute w-full">
-        <img className="w-full h-full" src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`} alt={filme.name} />
+      <div className="absolute w-full h-full">
+        <img className="w-full h-full object-cover" src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`} alt={filme.name} />
       </div>
 
       <div className="w-[700px] h-[400px] bg-slate-50 py-38 px-10 rounded-xl drop-shadow-lg relative flex justify-start items-center mx-10 top-56">
