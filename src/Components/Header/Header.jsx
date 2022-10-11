@@ -6,7 +6,7 @@ function Header(){
     <header className='w-screen h-24 bg-slate-50  z-20 fixed drop-shadow-lg flex justify-between items-center'>
       <div className='mx-10'>
         <Link to="/" className=''>
-          <BiCameraMovie className='text-5xl text-indigo-600 md:text:3xl'/>
+          <BiCameraMovie className='text-5xl text-indigo-600 hover:text-indigo-800 md:text:3xl'/>
         </Link>
       </div>
       <button className=' tracking-wider w-36 h-10 mx-10 px-4 py-1 bg-indigo-600 rounded-lg flex items-center hover:bg-indigo-800'>
