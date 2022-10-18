@@ -73,15 +73,15 @@ function Movie(){
   }
 
   return(
-    <div className="w-full h-full">
-      <div className="absolute w-full h-full">
+    <div className="w-full h-screen">
+      <div className="absolute w-full h-screen">
         <img className="w-full h-full object-cover" src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`} alt={filme.name} />
       </div>
 
-      <div className=" bg-slate-50 py-10 px-10 rounded-xl drop-shadow-lg relative flex justify-center items-center mx-10 top-56 sm:w-[600px] sm:h-[400px] sm:justify-start sm:p-10 md:w-[700px]">
+      <div className=" bg-slate-50 py-8 px-8 rounded-xl drop-shadow-lg relative flex justify-center items-center mx-3 top-[150px]  sm:w-[600px] sm:h-[400px] sm:justify-start sm:p-10 md:w-[700px]">
         <div className="block justify-center items-center">
           <div>
-            <h1 className="text-4xl font-bold mb-3 text-indigo-600">{filme.name}</h1>
+            <h1 className="text-2xl font-bold mb-3 text-indigo-600 sm:text-4xl">{filme.name}</h1>
             <strong className="flex items-center justify-start"><AiFillStar className="text-yellow-500 mr-2 text-[18px]"/>{filme.vote_average}</strong>
           </div>
           <div className="my-4 text-lg">{filme.overview}</div>
