@@ -18,7 +18,7 @@ As principais habilidades colocadas prática nesse projeto foram:
 
 ## Usabilidade
 
-O projeto consiste em uma aplicação consome a API [The Movie DB](https://developers.themoviedb.org/4/getting-started/authorization), de filmes e séries populares no momento. Os filmes estão localizados na página **Home** que pode redirecionar para as páginas **Movie** e **Favorites**.
+O projeto consiste em uma aplicação que consome a API [The Movie DB](https://developers.themoviedb.org/4/getting-started/authorization), de filmes e séries populares no momento. Os filmes estão localizados na página **Home** que pode redirecionar para as páginas **Movie** e **Favorites**.
 
 Na página **Movies** há uma breve descrição do filme e a nota de acordo com a popularidade, além disso é possível favoritar o filme. Dessa forma, os filmes favoritados poderão ser encontrados na página **Favorites**.
 
